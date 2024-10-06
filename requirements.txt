@@ -6,5 +6,6 @@ gradio
 huggingface-hub
 opencv-python
 flask
+dill
 requests
 #-e

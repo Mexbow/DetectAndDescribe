@@ -4,13 +4,221 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Image Captioning and Object Detection</title>
+    <!-- Add Bootstrap CDN -->
+    <link rel="icon" type="image/png" href="{{ url_for('static', filename='images/icon.ico') }}">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css">
     <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
 </head>
+<style>
+   .fullscreen-bg {
+    background-image: url('{{ url_for('static', filename='images/object.png') }}');
+    background-size: cover;
+    background-position: center;
+    height: 40vh;
+    position: relative;
+}
+</style>
 <body>
-    <h1>Upload an Image</h1>
-    <form action="/upload" method="POST" enctype="multipart/form-data">
-        <input type="file" name="image" accept="image/*" required>
-        <button type="submit">Upload</button>
-    </form>
+
+    <!-- Navigation Bar -->
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <a class="navbar-brand" href="#">
+            <img src="{{ url_for('static', filename='images/icon.ico') }}" alt="AI Tools Logo" width="30" height="50" class="d-inline-block align-top">
+        </a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav ml-auto">
+                <li class="nav-item active">
+                    <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#upload-section">Upload</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#features">Features</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#about">About</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#contact">Contact</a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Full-screen Background Image Section -->
+    <section class="fullscreen-bg">
+    </section>
+
+    <div class="container1">
+        <h1>Object Detection</h1>
+        <p class="subtitle">High-performance Object Detection API for fast and precise image element recognition and analysis</p>
+        <hr>
+        <div class="section" id="about">
+            <div>
+                <img src="{{ url_for('static', filename='images/icon-detection.png') }}" alt="Detection">
+                <h2>Detection</h2>
+                <p>Our advanced algorithm accurately detects multiple objects within an image, enhancing analysis capabilities.</p>
+            </div>
+            <div>
+                <img src="{{ url_for('static', filename='images/icon-classification.png') }}" alt="Classification">
+                <h2>Classification</h2>
+                <p>Our sophisticated solution predicts the most likely category for each detected object, ensuring accuracy.</p>
+            </div>
+        </div>
+    </div>
+    <div class="container mt-5" id="upload-section">
+        <!-- Section for Upload -->
+        <div class="card text-center">
+            <div class="card-body">
+                <h2 class="card-title">Upload an Image</h2>
+                <form action="/upload" method="POST" enctype="multipart/form-data">
+                    <div class="form-group">
+                        <input type="file" class="form-control-file" name="image" accept="image/*" required>
+                    </div>
+                    <button type="submit" class="btn btn-primary">Upload</button>
+                </form>
+            </div>
+        </div>
+    </div>
+    
+    <div class="container1">
+        <h1 class="main-title">Detect-and-Describe</h1>
+        <p class="description">
+            Detect-and-Describe is an innovative model that seamlessly integrates object detection and image captioning to provide detailed, context-aware descriptions of images. By combining the power of YOLOv5 for object detection with the Vision Transformer (ViT) for encoding images and GPT-2 for generating captions, this project enhances the interpretation and understanding of visual content. It is ideal for applications requiring both object recognition and descriptive language generation, allowing users to benefit from a richer understanding of images beyond simple detection.
+        </p>
+    </div>
+    
+        <div class="row">
+            <section id="features" class="col-md-6 card animate__animated animate__fadeInUp mb-4">
+                <h2><i class="fas fa-cogs"></i> Features</h2>
+                <ul>
+                    <li><strong>Object Detection:</strong> Detect-and-Describe utilizes YOLOv5...</li>
+                    <li><strong>Image Captioning:</strong> The model incorporates a Vision Transformer...</li>
+                    <li><strong>Contextual Understanding:</strong> Unlike traditional models...</li>
+                    <li><strong>Modularity:</strong> The architecture is designed to be modular...</li>
+                </ul>
+            </section>
+    
+            <section id="use-cases" class="col-md-6 card animate__animated animate__fadeInUp mb-4">
+                <h2><i class="fas fa-clipboard-list"></i> Use Cases</h2>
+                <ul>
+                    <li><strong>Automated Image Annotation:</strong> This model can be applied...</li>
+                    <li><strong>Accessibility:</strong> Detect-and-Describe can enhance accessibility...</li>
+                    <li><strong>Data Augmentation:</strong> The model can be used to generate contextually rich captions...</li>
+                    <li><strong>Content Moderation and Compliance:</strong> Automatically detecting and captioning image content...</li>
+                </ul>
+            </section>
+        </div>
+    
+        <div class="row mt-4">
+            <section id="technologies-used" class="col-md-6 card animate__animated animate__fadeInUp mb-4">
+                <h2><i class="fas fa-laptop-code"></i> Technologies Used</h2>
+                <ul>
+                    <li>YOLOv5: A cutting-edge real-time object detection model...</li>
+                    <li>Vision Transformer (ViT): A modern neural network architecture...</li>
+                    <li>GPT-2: A language model developed by OpenAI...</li>
+                    <li>PyTorch: An open-source machine learning library...</li>
+                </ul>
+            </section>
+    
+            <section id="getting-started" class="col-md-6 card animate__animated animate__fadeInUp mb-4">
+                <h2><i class="fas fa-play-circle"></i> Getting Started</h2>
+                <h3>Prerequisites</h3>
+                <p>Before using the Detect-and-Describe model, ensure you have the following installed:</p>
+                <ul>
+                    <li>Python 3.7+</li>
+                    <li>PyTorch (with CUDA support if using a GPU)</li>
+                    <li>Torchvision</li>
+                    <li>YOLOv5 dependencies</li>
+                    <li>Hugging Face Transformers</li>
+                    <li>Other requirements specified in requirements.txt</li>
+                </ul>
+                <h3>Installation</h3>
+                <p>Clone the repository:</p>
+                <pre><code>git clone https://github.com/yourusername/Detect-and-Describe.git
+cd Detect-and-Describe</code></pre>
+            </section>
+        </div>
+    
+        <div class="row mt-4">
+            <section id="model-architecture" class="col-md-6 card animate__animated animate__fadeInUp mb-4">
+                <h2><i class="fas fa-layer-group"></i> Model Architecture</h2>
+                <p>YOLOv5: Detects objects in the input image...</p>
+                <p>Vision Transformer (ViT): Extracts high-level features from the detected objects...</p>
+                <p>GPT-2: Uses the image features as input to generate a descriptive caption...</p>
+            </section>
+    
+            <section id="performance" class="col-md-6 card animate__animated animate__fadeInUp mb-4">
+                <h2><i class="fas fa-tachometer-alt"></i> Performance</h2>
+                <p><strong>Speed:</strong> YOLOv5 ensures real-time object detection...</p>
+                <p><strong>Accuracy:</strong> ViT provides state-of-the-art feature extraction...</p>
+            </section>
+        </div>
+        <div class="row mt-4">
+            <section id="license" class="col-md-6 card animate__animated animate__fadeInUp mb-4">
+                <h2><i class="fas fa-file-contract"></i> License</h2>
+                <p>This project is licensed under the Apache 2.0 License - see the LICENSE file for details.</p>
+            </section>
+    
+            <section id="acknowledgments" class="col-md-6 card animate__animated animate__fadeInUp mb-4">
+                <h2><i class="fas fa-hands-helping"></i> Acknowledgments</h2>
+                <p>Special thanks to the open-source contributors of YOLOv5, Vision Transformer, GPT-2, and PyTorch libraries...</p>
+            </section>
+        </div>
+    <footer class="footer-section">
+        <div class="footer-cta">
+            <div class="container">
+                <div class="single-cta">
+                    <i class="fas fa-lightbulb"></i>
+                    <div class="cta-text">
+                        <h4>Detect-and-Describe</h4>
+                        <span>Your AI Tools for Object Detection and Captioning</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="footer-content">
+            <div class="container">
+                <div class="footer-logo">
+                    <img src="{{ url_for('static', filename='images/icon.ico') }}" alt="Logo">
+                </div>
+                <div class="footer-text">
+                    <p>© 2024 M&M. All rights reserved.</p>
+                </div>
+                <div class="footer-widget">
+                    <div class="footer-widget-heading">
+                        <h3>Table of Contents</h3>
+                    </div>
+                    <ul>
+                        <li><a href="#features">Features</a></li>
+                        <li><a href="#use-cases">Use Cases</a></li>
+                        <li><a href="#technologies">Technologies Used</a></li>
+                        <li><a href="#getting-started">Getting Started</a></li>
+                        <li><a href="#example">Example</a></li>
+                        <li><a href="#model-architecture">Model Architecture</a></li>
+                        <li><a href="#performance">Performance</a></li>
+                        <li><a href="#license">License</a></li>
+                        <li><a href="#acknowledgments">Acknowledgments</a></li>
+                    </ul>
+                </div>
+                <div class="footer-social-icon">
+                    <span>Follow Us</span>
+                    <a href="#"class="github-bg" ><i class="fab fa-github"></i></a>
+                    <a href="#" class="huggingface-bg"><img src="{{ url_for('static', filename='images/huggingface.png') }}" alt="AI Tools Logo" width="30" height="30">
+                    </a> 
+                </div>
+            </div>
+        </div>
+    <!-- Optional JavaScript for Bootstrap -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
 </body>
 </html>
