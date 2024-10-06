@@ -5,4 +5,4 @@ torchvision
 gradio
 huggingface-hub
 opencv-python
-#-e .
+#-e
