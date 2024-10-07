@@ -81,6 +81,11 @@ def crop_objects(image, boxes):
     return cropped_images
 
 if __name__ == '__main__':
-    ngrok.set_auth_token("2n6EDPhIXvU79Sh5zLHKyI1clfA_5L59Dy9okywaCGCgDNxHK")
+    ngrok.set_auth_token("YOUR_NGROK_AUTH_TOKEN")
     public_url = ngrok.connect(8000)
     print(f"Public URL: {public_url}")
+    
+    try:
+        app.run(port=8000)
+    except Exception as e:
+        print(f"Error starting Flask app: {e}")
