@@ -4,8 +4,6 @@ from flask import Flask, request, render_template, redirect, url_for
 from PIL import Image
 import torch
 from transformers import AutoImageProcessor, AutoTokenizer, VisionEncoderDecoderModel
-from pyngrok import ngrok
-
 app = Flask(__name__)
 
 # Function to install dependencies
@@ -82,8 +80,6 @@ def crop_objects(image, boxes):
         cropped_image = image.crop((box[0], box[1], box[2], box[3]))
         cropped_images.append(cropped_image)
     return cropped_images
+
 if __name__ == '__main__':
-    ngrok.set_auth_token("2n6EDPhIXvU79Sh5zLHKyI1clfA_5L59Dy9okywaCGCgDNxHK")
-    public_url = ngrok.connect(8000)
-    print(f" * ngrok tunnel available at: {public_url}")
     app.run(host='0.0.0.0', port=8000)
