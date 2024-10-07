@@ -1,7 +1,8 @@
 torch==2.2.2
 transformers==4.28.0
+tokenizers==0.13.2
 Pillow==10.0.0
-opencv-python==4.8.1.78
+opencv-python==4.8.1
 gradio==3.17.0
 huggingface-hub==0.15.1
 flask==2.2.3
