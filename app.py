@@ -4,6 +4,7 @@ from flask import Flask, request, render_template, redirect, url_for
 from PIL import Image
 import torch
 from transformers import AutoImageProcessor, AutoTokenizer, VisionEncoderDecoderModel
+
 app = Flask(__name__)
 
 def install_dependencies():
@@ -18,8 +19,9 @@ def install_dependencies():
 install_dependencies()
 
 # Load models once when the app starts
-weights_path = os.path.join(os.path.dirname(__file__), 'weights', 'best14.pt')
-object_detection_model = torch.hub.load('Mexbow/yolov5_model', 'custom', path=weights_path, autoshape=True)
+weights_url = "https://raw.githubusercontent.com/Mexbow/Deploy_project/main/weights/best14.pt"
+object_detection_model = torch.hub.load('Mexbow/yolov5_model', 'custom', path=weights_url, autoshape=True)
+
 captioning_processor = AutoImageProcessor.from_pretrained("motheecreator/ViT-GPT2-Image-Captioning")
 tokenizer = AutoTokenizer.from_pretrained("motheecreator/ViT-GPT2-Image-Captioning")
 caption_model = VisionEncoderDecoderModel.from_pretrained("motheecreator/ViT-GPT2-Image-Captioning")
@@ -71,7 +73,6 @@ def process_image(image):
     
     return {'labels': labels, 'captions': captions, 'detected_image_path': detected_image_path}, original_caption
 
-
 def crop_objects(image, boxes):
     cropped_images = []
     for box in boxes:
@@ -82,4 +83,3 @@ def crop_objects(image, boxes):
 if __name__ == '__main__':
     port = int(os.environ.get("PORT", 8000))
     app.run(host='0.0.0.0', port=port)
-
