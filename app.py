@@ -83,8 +83,7 @@ def crop_objects(image, boxes):
         cropped_images.append(cropped_image)
     return cropped_images
 if __name__ == '__main__':
-    # Start ngrok tunnel
+    ngrok.set_auth_token("2n6EDPhIXvU79Sh5zLHKyI1clfA_5L59Dy9okywaCGCgDNxHK")
     public_url = ngrok.connect(8000)
     print(f" * ngrok tunnel available at: {public_url}")
-    
     app.run(host='0.0.0.0', port=8000)
