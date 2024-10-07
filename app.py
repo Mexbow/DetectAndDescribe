@@ -1,6 +1,7 @@
 from flask import Flask, request, render_template, redirect, url_for
 from PIL import Image
 import os
+from pyngrok import ngrok
 import torch
 from transformers import AutoImageProcessor, AutoTokenizer, VisionEncoderDecoderModel
 
