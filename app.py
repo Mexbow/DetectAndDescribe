@@ -6,7 +6,6 @@ import torch
 from transformers import AutoImageProcessor, AutoTokenizer, VisionEncoderDecoderModel
 app = Flask(__name__)
 
-# Function to install dependencies
 def install_dependencies():
     if os.path.exists('requirements.txt'):
         try:
@@ -16,7 +15,6 @@ def install_dependencies():
             print(f"Error installing dependencies: {e}")
             exit(1)
 
-# Ensure dependencies are installed
 install_dependencies()
 
 # Load models once when the app starts
@@ -82,4 +80,6 @@ def crop_objects(image, boxes):
     return cropped_images
 
 if __name__ == '__main__':
-    app.run(host='0.0.0.0', port=8000)
+    port = int(os.environ.get("PORT", 8000))
+    app.run(host='0.0.0.0', port=port)
+
