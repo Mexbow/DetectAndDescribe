@@ -1,13 +1,27 @@
+import subprocess
+import os
 from flask import Flask, request, render_template, redirect, url_for
 from PIL import Image
-import os
 import torch
 from transformers import AutoImageProcessor, AutoTokenizer, VisionEncoderDecoderModel
 
 app = Flask(__name__)
 
+# Function to install dependencies
+def install_dependencies():
+    if os.path.exists('requirements.txt'):
+        try:
+            subprocess.check_call(['pip', 'install', '-r', 'requirements.txt'])
+            print("Dependencies installed.")
+        except subprocess.CalledProcessError as e:
+            print(f"Error installing dependencies: {e}")
+            exit(1)
+
+# Ensure dependencies are installed
+install_dependencies()
+
 # Load models once when the app starts
-weights_path = 'weights/best14.pt'
+weights_path = os.path.join(os.path.dirname(__file__), 'weights', 'best14.pt')
 object_detection_model = torch.hub.load('Mexbow/yolov5_model', 'custom', path=weights_path, autoshape=True)
 captioning_processor = AutoImageProcessor.from_pretrained("motheecreator/ViT-GPT2-Image-Captioning")
 tokenizer = AutoTokenizer.from_pretrained("motheecreator/ViT-GPT2-Image-Captioning")
@@ -69,4 +83,4 @@ def crop_objects(image, boxes):
     return cropped_images
 
 if __name__ == '__main__':
-    app.run(debug=True)
+    app.run(host='0.0.0.0', port=8000)
