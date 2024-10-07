@@ -1,26 +1,14 @@
-import subprocess
-import os
 from flask import Flask, request, render_template, redirect, url_for
-from pyngrok import ngrok
 from PIL import Image
+import os
 import torch
 from transformers import AutoImageProcessor, AutoTokenizer, VisionEncoderDecoderModel
+
 app = Flask(__name__)
 
-def install_dependencies():
-    if os.path.exists('requirements.txt'):
-        try:
-            subprocess.check_call(['pip', 'install', '-r', 'requirements.txt'])
-            print("Dependencies installed.")
-        except subprocess.CalledProcessError as e:
-            print(f"Error installing dependencies: {e}")
-            exit(1)
-
-install_dependencies()
-
-weights_path = os.path.join(os.path.dirname(__file__), 'weights', 'best14.pt')
-print(weights_path)
-object_detection_model = torch.hub.load('Mexbow/yolov5_model', 'custom', path=weights_path, autoshape=True)
+# Load models once when the app starts
+weights_path = 'weights/best14.pt'
+object_detection_model = torch.hub.load('ultralytics/yolov5', 'yolov5s', pretrained=True, force_reload=True)
 captioning_processor = AutoImageProcessor.from_pretrained("motheecreator/ViT-GPT2-Image-Captioning")
 tokenizer = AutoTokenizer.from_pretrained("motheecreator/ViT-GPT2-Image-Captioning")
 caption_model = VisionEncoderDecoderModel.from_pretrained("motheecreator/ViT-GPT2-Image-Captioning")
@@ -79,13 +67,7 @@ def crop_objects(image, boxes):
         cropped_image = image.crop((box[0], box[1], box[2], box[3]))
         cropped_images.append(cropped_image)
     return cropped_images
-
 if __name__ == '__main__':
     ngrok.set_auth_token("2n6EDPhIXvU79Sh5zLHKyI1clfA_5L59Dy9okywaCGCgDNxHK")
     public_url = ngrok.connect(8000)
-    print(f"Public URL: {public_url}")
-    
-    try:
-        app.run(port=8000)
-    except Exception as e:
-        print(f"Error starting Flask app: {e}")
+    print(f"Public URL: {public_url}")
