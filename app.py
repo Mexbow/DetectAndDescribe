@@ -5,7 +5,8 @@ import torch
 from transformers import AutoImageProcessor, AutoTokenizer, VisionEncoderDecoderModel
 
 app = Flask(__name__)
-object_detection_model = torch.hub.load('ultralytics/yolov5', 'yolov5s', pretrained=True, force_reload=True)
+weights_path = os.path.join(os.path.dirname(__file__), 'weights', 'best14.pt')
+object_detection_model = torch.hub.load('Mexbow/yolov5_model', 'custom', path=weights_path, autoshape=True)
 captioning_processor = AutoImageProcessor.from_pretrained("motheecreator/ViT-GPT2-Image-Captioning")
 tokenizer = AutoTokenizer.from_pretrained("motheecreator/ViT-GPT2-Image-Captioning")
 caption_model = VisionEncoderDecoderModel.from_pretrained("motheecreator/ViT-GPT2-Image-Captioning")
