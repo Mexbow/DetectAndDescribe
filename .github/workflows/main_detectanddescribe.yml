@@ -20,7 +20,7 @@ jobs:
       - name: Set up Python version
         uses: actions/setup-python@v5
         with:
-          python-version: '3.12'
+          python-version: '3.10'
 
       - name: Create and start virtual environment
         run: |
@@ -60,19 +60,18 @@ jobs:
 
       - name: Unzip artifact for deployment
         run: unzip release.zip
-
       
       - name: Login to Azure
         uses: azure/login@v2
         with:
-          client-id: ${{ secrets.AZUREAPPSERVICE_CLIENTID_003C08B99F7749AA845D0DF39E2A4C15 }}
-          tenant-id: ${{ secrets.AZUREAPPSERVICE_TENANTID_927D29C47FB44918A57665EAB3989071 }}
-          subscription-id: ${{ secrets.AZUREAPPSERVICE_SUBSCRIPTIONID_8923FD53A67243F8A3564F8721F2E7BD }}
+          client-id: ${{ secrets.AZUREAPPSERVICE_CLIENTID_B5EE0F1F755A4833BDFA7D5E43DEED87 }}
+          tenant-id: ${{ secrets.AZUREAPPSERVICE_TENANTID_10D2D5E772AB4075922742A3D9560B6E }}
+          subscription-id: ${{ secrets.AZUREAPPSERVICE_SUBSCRIPTIONID_70757C25F6EB46EDA818EAED86351A2D }}
 
       - name: 'Deploy to Azure Web App'
         uses: azure/webapps-deploy@v3
         id: deploy-to-webapp
         with:
           app-name: 'DetectAndDescribe'
-          slot-name: 'Production'
+          slot-name: 'staging'
           
