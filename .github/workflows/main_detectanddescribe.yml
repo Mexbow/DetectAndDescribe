@@ -2,7 +2,7 @@
 # More GitHub Actions for Azure: https://github.com/Azure/actions
 # More info on Python, GitHub Actions, and Azure App Service: https://aka.ms/python-webapps-actions
 
-name: Build and deploy Python app to Azure Web App - DetectandDescribe
+name: Build and deploy Python app to Azure Web App - DetectAndDescribe
 
 on:
   push:
@@ -65,14 +65,14 @@ jobs:
       - name: Login to Azure
         uses: azure/login@v2
         with:
-          client-id: ${{ secrets.AZUREAPPSERVICE_CLIENTID_882949BC14BD4E7E8D276E0E10E7AE11 }}
-          tenant-id: ${{ secrets.AZUREAPPSERVICE_TENANTID_6AD91AC3584C4FA488BB4CC5498EA864 }}
-          subscription-id: ${{ secrets.AZUREAPPSERVICE_SUBSCRIPTIONID_5B64F729C4E34B62A7D1009C3B5584AB }}
+          client-id: ${{ secrets.AZUREAPPSERVICE_CLIENTID_003C08B99F7749AA845D0DF39E2A4C15 }}
+          tenant-id: ${{ secrets.AZUREAPPSERVICE_TENANTID_927D29C47FB44918A57665EAB3989071 }}
+          subscription-id: ${{ secrets.AZUREAPPSERVICE_SUBSCRIPTIONID_8923FD53A67243F8A3564F8721F2E7BD }}
 
       - name: 'Deploy to Azure Web App'
         uses: azure/webapps-deploy@v3
         id: deploy-to-webapp
         with:
-          app-name: 'DetectandDescribe'
+          app-name: 'DetectAndDescribe'
           slot-name: 'Production'
           
