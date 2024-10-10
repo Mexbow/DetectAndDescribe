@@ -66,4 +66,4 @@ def crop_objects(image, boxes):
         cropped_images.append(cropped_image)
     return cropped_images
 if __name__ == '__main__':
-    app.run(host='0.0.0.0', port=8000)
+    app.run()
