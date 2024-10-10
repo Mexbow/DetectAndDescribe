@@ -1,6 +1,6 @@
 torch
 transformers
-Pillow
+pillow
 torchvision
 gradio
 huggingface-hub
