@@ -1,7 +1,7 @@
 # Detect-and-Describe
 
 Detect-and-Describe is an innovative model that seamlessly integrates object detection and image captioning to provide detailed, context-aware descriptions of images. By combining the power of **YOLOv5** for object detection with the **Vision Transformer (ViT)** for encoding images and **GPT-2** for generating captions, this project enhances the interpretation and understanding of visual content. It is ideal for applications requiring both object recognition and descriptive language generation, allowing users to benefit from a richer understanding of images beyond simple detection.
-![The Result of combining YOLOv5 and ViT_GPT-2](https://github.com/user-attachments/assets/93706ea2-8cb7-40e5-9717-f6a1b9b853e6)
+![The Result of combining YOLOv5 and ViT_GPT-2](https://github.com/user-attachments/assets/f4a2cfb3-0c30-4f9e-bca0-c800092fd6e3)
 
 ## Table of Contents
 - [Features](#features)
