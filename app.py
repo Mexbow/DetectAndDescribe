@@ -1,8 +1,10 @@
 from flask import Flask, request, render_template, redirect, url_for
+import streamlit as st
 from PIL import Image
 import os
 import torch
 from transformers import AutoImageProcessor, AutoTokenizer, VisionEncoderDecoderModel
+st.title("Detect and Describe App")
 
 app = Flask(__name__)
 weights_path = os.path.join(os.path.dirname(__file__), 'weights', 'best14.pt')
