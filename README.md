@@ -61,7 +61,7 @@ Before using the Detect-and-Describe model, ensure you have the following instal
 
 1. Clone the repository:
    ```bash
-   git clone https://github.com/yourusername/Detect-and-Describe.git
+   git clone https://github.com/Mexbow/Detect-and-Describe.git
    cd Detect-and-Describe
 
 ## Model Architecture
